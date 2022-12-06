@@ -1,4 +1,4 @@
-package EbebekFinalCase.PatikaStore;
+package EbebekFinalCase;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

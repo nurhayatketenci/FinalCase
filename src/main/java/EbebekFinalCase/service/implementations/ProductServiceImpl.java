@@ -1,19 +1,26 @@
-package service.implementations;
+package EbebekFinalCase.service.implementations;
 
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Locale.Category;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import model.Product;
-import repository.ProductRepository;
-import service.ProductService;
+import EbebekFinalCase.model.Product;
+import EbebekFinalCase.repository.ProductRepository;
+import EbebekFinalCase.service.ProductService;
 
 @Service
 public class ProductServiceImpl implements ProductService {
-    private ProductRepository productRepository;
+    private final ProductRepository productRepository;
+
+
+	@Autowired
+	public ProductServiceImpl(ProductRepository productRepository) {
+		this.productRepository = productRepository;
+	}
+
 	@Override
 	public List<Product> getAllProducts() {
 		List<Product> products=this.productRepository.findAll();
@@ -39,5 +46,12 @@ public class ProductServiceImpl implements ProductService {
 		this.productRepository.deleteById(id);
 		return new ResponseEntity<>( HttpStatus.OK);
 	}
+
+	@Override
+	public ResponseEntity<Product> getByBrand(int brandId) {
+		this.productRepository.getByBrand_Id(brandId);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
 
 }

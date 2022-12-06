@@ -1,10 +1,10 @@
-package service;
+package EbebekFinalCase.service;
 
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 
-import model.Brand;
+import EbebekFinalCase.model.Brand;
 
 public interface BrandService {
 	List<Brand> getAllBrands();

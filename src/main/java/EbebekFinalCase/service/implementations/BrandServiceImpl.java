@@ -1,22 +1,32 @@
-package service.implementations;
+package EbebekFinalCase.service.implementations;
 
 
 import java.util.List;
 import java.util.NoSuchElementException;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import model.Brand;
-import repository.BrandRepository;
-import service.BrandService;
+import EbebekFinalCase.model.Brand;
+import EbebekFinalCase.repository.BrandRepository;
+import EbebekFinalCase.service.BrandService;
 
 @Service
 public class BrandServiceImpl implements BrandService{
-    private BrandRepository brandRepository;
+
+    private final BrandRepository brandRepository;
+
+	@Autowired
+	public BrandServiceImpl(BrandRepository brandRepository) {
+		this.brandRepository = brandRepository;
+	}
+
 	@Override
 	public List<Brand> getAllBrands() {
-		List<Brand> brands=this.brandRepository.findAllBrand();
-		return brands ;
+		List<Brand> brands = brandRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
+		return brands;
 	}
 
 	@Override

@@ -1,7 +1,7 @@
-package service;
+package EbebekFinalCase.service;
 
 import java.util.List;
-import java.util.Locale.Category;
+import EbebekFinalCase.model.Category;
 import org.springframework.http.ResponseEntity;
 
 public interface CategoryService {

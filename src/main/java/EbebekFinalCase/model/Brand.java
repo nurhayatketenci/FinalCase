@@ -1,15 +1,9 @@
-package model;
+package EbebekFinalCase.model;
+
 
 import java.util.List;
-import java.util.UUID;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -19,19 +13,20 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@Table(name = "categories")
+@Table(name = "brands")
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler","products"})
-public class Category {
+public class Brand {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
-	private UUID id;
+	private int id;
 	
 	@Column(name="name")
 	private String name;
 	
-	@OneToMany(mappedBy="category")
+	@OneToMany(mappedBy="brand")
 	private List<Product> products;
+	
 }
